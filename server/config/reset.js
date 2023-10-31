@@ -10,8 +10,8 @@ const createUsersTable = async () => {
       password varchar(60) NOT NULL,
       icon_url text,
       about text,
-      created_at timestamp NOT NULL,
-      updated_at timestamp
+      created_at timestamp DEFAULT NOW() NOT NULL,
+      updated_at timestamp DEFAULT NOW() NOT NULL
     );
   `;
 
@@ -34,8 +34,8 @@ const createEventsTable = async () => {
       start_time time NOT NULL,
       end_time time NOT NULL,
       category varchar(50) NOT NULL,
-      created_at timestamp NOT NULL,
-      updated_at timestamp,
+      created_at timestamp DEFAULT NOW() NOT NULL,
+      updated_at timestamp DEFAULT NOW() NOT NULL,
       FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     );
   `;
@@ -58,8 +58,8 @@ const createJournalsTable = async () => {
       gratitude text,
       goals text,
       notes text,
-      created_at timestamp NOT NULL,
-      updated_at timestamp,
+      created_at timestamp DEFAULT NOW() NOT NULL,
+      updated_at timestamp DEFAULT NOW() NOT NULL,
       FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     );
   `;
