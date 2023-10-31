@@ -3,14 +3,13 @@ import { pool } from "../config/database.js";
 const createEntry = async (req, res) => {
   try {
     const user_id = parseInt(req.params.user_id);
-    const { title, inspiration, gratitude, goals, notes, created_at } =
-      req.body;
+    const { title, inspiration, gratitude, goals, notes } = req.body;
 
     const results = await pool.query(
-      `INSERT INTO journals (user_id, title, inspiration, gratitude, goals, notes, created_at)
-      VALUES($1, $2, $3, $4, $5, $6, $7)
+      `INSERT INTO journals (user_id, title, inspiration, gratitude, goals, notes)
+      VALUES($1, $2, $3, $4, $5, $6)
       RETURNING *`,
-      [user_id, title, inspiration, gratitude, goals, notes, created_at]
+      [user_id, title, inspiration, gratitude, goals, notes]
     );
     res.status(201).json(results.rows[0]);
   } catch (error) {
@@ -52,14 +51,22 @@ const updateEntry = async (req, res) => {
     const id = parseInt(req.params.id);
     const user_id = parseInt(req.params.user_id);
 
-    const { title, inspiration, gratitude, goals, notes, updated_at } =
-      req.body;
+    const { title, inspiration, gratitude, goals, notes } = req.body;
 
     const results = await pool.query(
       `UPDATE journals
       SET title = $1, inspiration = $2, gratitude = $3, goals = $4, notes = $5, updated_at = $6
       WHERE user_id = $7 AND id = $8`,
-      [title, inspiration, gratitude, goals, notes, updated_at, user_id, id]
+      [
+        title,
+        inspiration,
+        gratitude,
+        goals,
+        notes,
+        new Date().toISOString(),
+        user_id,
+        id,
+      ]
     );
     res.status(200).json(results.rows[0]);
   } catch (error) {
