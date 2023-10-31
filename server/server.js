@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import journalRoutes from "./routes/journals.js";
 
 const app = express();
 
@@ -13,6 +14,8 @@ app.get("/", (req, res) => {
       '<h1 style="text-align: center; margin-top: 50px;">✈️ Planorama API</h1>'
     );
 });
+
+app.use("/api/journals/users", journalRoutes);
 
 const PORT = process.env.PORT || 3001;
 
