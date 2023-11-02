@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import journalRoutes from "./routes/journals.js";
+import eventRoutes from "./routes/events.js";
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/journals/users", journalRoutes);
+app.use("/api/events/users", eventRoutes);
 
 const PORT = process.env.PORT || 3001;
 
