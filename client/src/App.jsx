@@ -1,9 +1,16 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Layout from "./layout/Layout";
+import Login from "./pages/Login";
 
 function App() {
   return (
-    <div className="hover:bottom-0 border-8  flex flex-col">
-      <h1 className="bg-blue">Hello</h1>
+    <div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Login />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
