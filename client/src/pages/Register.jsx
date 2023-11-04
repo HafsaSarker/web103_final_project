@@ -102,7 +102,7 @@ function Register() {
                 <p className="text-sm font-light text-gray-500">
                   Already have an account?{" "}
                   <a
-                    href="#"
+                    href="/"
                     className="font-medium text-primary-600 hover:underline"
                   >
                     Login here
