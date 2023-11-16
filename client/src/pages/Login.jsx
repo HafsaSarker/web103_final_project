@@ -2,8 +2,8 @@ import React from "react";
 
 function Login() {
   return (
-    <div className="min-h-full min-w-full">
-      <section className="bg-primary-50">
+    <div className="min-h-full min-w-full bg-primary-50">
+      <section>
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <a
             href="#"
